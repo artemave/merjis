@@ -1,5 +1,14 @@
 Merjis::Application.routes.draw do
 
+  devise_for :users
+  namespace :user do # that is for devise authencticate_user! to work
+    resource :session, :only => [:new]
+  end
+
+  #match '/users/sign_in', :to => 'sessions#new'
+  match '/sign_out', :to => 'user/sessions#destroy'
+  match '/auth/:provider/callback' => 'user/sessions#create'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -10,6 +10,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'declarative_authorization'
 gem 'resources_controller', :git => 'git://github.com/ianwhite/resources_controller'
+gem 'haml'
+gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
