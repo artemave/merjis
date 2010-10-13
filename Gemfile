@@ -13,6 +13,12 @@ gem 'resources_controller', :git => 'git://github.com/ianwhite/resources_control
 gem 'haml'
 gem 'jquery-rails'
 
+group :test do
+  gem "rspec"
+  gem "rspec-rails"
+  gem "factory_girl"
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
