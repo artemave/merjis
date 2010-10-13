@@ -10,14 +10,18 @@ gem 'devise'
 gem 'omniauth'
 gem 'declarative_authorization'
 gem 'resources_controller', :git => 'git://github.com/ianwhite/resources_controller'
-gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
+gem 'simple_form'
 
 group :test do
-  gem "rspec"
-  gem "rspec-rails"
-  gem "factory_girl"
+  gem 'shoulda'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl'
 end
+
+gem "rails3-generators", :group => :development
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -24,5 +24,13 @@ Merjis::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  config.generators do |g|
+    g.template_engine :haml
+    g.form_builder :simple_form
+    g.test_framework :shoulda
+    g.fallbacks[:shoulda] = :test_unit
+    g.fixture_replacement :factory_girl
+  end
 end
 
