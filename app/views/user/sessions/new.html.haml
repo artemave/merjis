@@ -1,11 +1,4 @@
 %form{:method => 'get', :action => '/auth/open_id', :id => 'auth_form'}
-  %label{:for => 'openid_url'} Enter your Google Account username
-  %input{:type => 'text', :name => 'openid_url'}
+  %input{:type => 'hidden', :name => 'openid_url', :value => 'https://www.google.com/accounts/o8/id'}
   %input{:type => 'submit', :value => 'Sign In'}
-
-:javascript
-  $('#auth_form').submit(function() {
-    userinput = $('input:text[name=openid_url]', $(this)).first();
-    userinput.val('www.google.com/profiles/' + userinput.val());
-  });
 
