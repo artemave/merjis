@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :username
 
-  has_many :authentications
+  has_many :authentications, :dependent => :delete_all
 
   validates_uniqueness_of :email, :username
   validates_presence_of :email, :username
