@@ -15,13 +15,19 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'spork'
+  gem 'launchy'
   gem 'shoulda'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
 end
 
-gem "rails3-generators", :group => :development
+gem 'rails3-generators', :group => :development
 
 # Use unicorn as the web server
 # gem 'unicorn'
