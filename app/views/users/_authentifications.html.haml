@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th email
+      %th OpenID
+      %th
+  %tbody
+    - @user.authentications.each do |auth|
+      %tr
+        %td= auth.email
+        %td= auth.uid
+        %td= link_to 'Delete', auth, :confirm => 'Really?', :method => :delete
+
+= link_to 'Add OpenID', sign_in_path + '?openid_url=https://www.google.com/accounts/o8/id'

@@ -1,0 +1,14 @@
+= simple_form_for @authentication do |form|
+
+  -if @authentication.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@authentication.errors.count, "error")} prohibited this #{Authentication.name.titleize} from being saved:"
+      %ul
+        - @authentication.errors.full_messages.each do |msg|
+          %li= msg  
+
+  = form.input :user_id, :label => 'User'
+  = form.input :uid, :label => 'Uid'
+
+  .actions
+    = form.button :submit

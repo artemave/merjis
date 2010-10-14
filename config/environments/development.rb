@@ -28,9 +28,13 @@ Merjis::Application.configure do
   config.generators do |g|
     g.template_engine :haml
     g.form_builder :simple_form
-    g.test_framework :shoulda
-    g.fallbacks[:shoulda] = :test_unit
-    g.fixture_replacement :factory_girl
+    g.test_framework :rspec
+    g.fixture_replacement :factory_girl, :dir=> 'spec/factories'
+    g.helper_specs false
+    g.routing_specs false
+    g.controller_specs false
+    g.view_specs false
+    #g.fallbacks[:rspec] = :test_unit
   end
 end
 

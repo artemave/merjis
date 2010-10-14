@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101011211507) do
+ActiveRecord::Schema.define(:version => 20101014094743) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+  end
 
   create_table "openid_associations", :force => true do |t|
     t.datetime "issued_at"
@@ -45,9 +53,11 @@ ActiveRecord::Schema.define(:version => 20101011211507) do
     t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end
