@@ -1,0 +1,55 @@
+= validates_email
+
+validates_email is a Rails 3 plugin that validates email addresses against RFC 2822 and RFC 3696
+
+== Installation
+
+  rails plugin install git://github.com/spectator/validates_email.git
+
+  or
+
+  gem 'spectator-validates_email', :require => 'validates_email'
+
+== Usage
+
+  class User < ActiveRecord::Base
+    validates :field, :email => true
+  end
+
+As well as any other Rails 3 validation this one has the same triggers, such as <tt>:on</tt>, <tt>:if</tt>, <tt>:unless</tt>, <tt>:allow_blank</tt>, and <tt>:allow_nil</tt>.
+
+Also, you can pass your custom error message, otherwise it will use ActiveRecord's invalid error message.
+
+  class User < ActiveRecord::Base
+    validates :field, :email => { :message => 'is not an email address' }
+  end
+
+If you like to check MX Records for email, you can use <tt>:mx</tt> option.
+
+  class User < ActiveRecord::Base
+    validates :field, :email => { :mx => true }
+  end
+
+And if you like to check MX Records with fallback to A record, use <tt>:a_fallback</tt> option.
+
+  class User < ActiveRecord::Base
+    validates :field, :email => { :mx => { :a_fallback => true } }
+  end
+
+== Testing
+
+To execute unit tests run <tt>rake test</tt> within plugin folder.
+
+The unit tests for this plugin use an in-memory sqlite3 database.
+
+== Credits
+
+Most of the code were taken from Alex Dunae (dunae.ca) plugin (see http://github.com/alexdunae/validates_email_format_of/) and adopted for Rails 3, so pass all beers to him.
+
+== Contributors
+
+Petr Blaho
+
+== Notes
+
+Tested under ruby 1.9.2-rc1 and Rails 3 Edge

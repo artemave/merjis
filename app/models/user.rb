@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :delete_all
 
-  validates_uniqueness_of :email, :username
-  validates_presence_of :email, :username
+  validates :email,
+    :presence => true,
+    :email => true
+
+  validates :username,
+    :presence => true,
+    :uniqueness => true
 end

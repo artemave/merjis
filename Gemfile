@@ -27,7 +27,13 @@ group :test do
   gem 'factory_girl'
 end
 
-gem 'rails3-generators', :group => :development
+group :development do
+  gem 'rails3-generators'
+  gem 'wirble'
+  gem 'interactive_editor'
+  gem 'awesome_print'
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
