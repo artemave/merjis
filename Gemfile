@@ -8,13 +8,13 @@ gem 'rails', '3.0.0'
 gem 'mysql'
 gem 'devise'
 gem 'omniauth'
-gem 'declarative_authorization'
+gem 'cancan'
 gem 'resources_controller', :git => 'git://github.com/ianwhite/resources_controller'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'simple_form'
 
-group :test do
+group :test, :development do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -23,11 +23,8 @@ group :test do
   gem 'launchy'
   gem 'shoulda'
   gem 'rspec'
-  gem 'rspec-rails'
-  gem 'factory_girl'
-end
-
-group :development do
+  gem 'rspec-rails', '>= 2.0.0.beta.22'
+  gem 'factory_girl_rails'
   gem 'rails3-generators'
   gem 'wirble'
   gem 'interactive_editor'
