@@ -9,7 +9,10 @@ class User::SessionsController < ApplicationController
     auth = Authentication.find_or_create_by_uid(auth_hash['uid'])
     auth.email = auth_hash['user_info']['email']
 
-    if current_user # this branch should be in users controller
+    if auth.user and auth.user != current_user
+      flash[:alert] = "This OpenID is already used by account #{auth.user.username}"
+      redirect_to :back
+    elsif current_user # this branch should be in users controller
                     # but this is the only entry point from openid provider
       if not auth.user
         current_user.authentications << auth

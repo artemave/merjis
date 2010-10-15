@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :username
 
-  has_many :authentications, :dependent => :delete_all
+  has_many :authentications, :dependent => :destroy
   has_and_belongs_to_many :roles
 
   validates :email,
