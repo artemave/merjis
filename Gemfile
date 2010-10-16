@@ -23,7 +23,7 @@ group :test, :development do
   gem 'launchy'
   gem 'shoulda'
   gem 'rspec'
-  gem 'rspec-rails', '>= 2.0.0.beta.22'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rails3-generators'
   gem 'wirble'

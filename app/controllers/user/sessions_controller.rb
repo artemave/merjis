@@ -9,27 +9,33 @@ class User::SessionsController < ApplicationController
     auth = Authentication.find_or_create_by_uid(auth_hash['uid'])
     auth.email = auth_hash['user_info']['email']
 
-    if auth.user and auth.user != current_user
-      flash[:alert] = "This OpenID is already used by account #{auth.user.username}"
-      redirect_to :back
-    elsif current_user # this branch should be in users controller
-                    # but this is the only entry point from openid provider
-      if not auth.user
+    if auth.user
+      if current_user
+        if auth.user != current_user
+          flash[:alert] = "This OpenID is already used by account #{auth.user.username}"
+        else
+          flash[:notice] = "This OpenID is already assigned to this user. Nothing changed."
+        end
+        redirect_to :back
+      else
+        sign_in auth.user
+        redirect_to :root
+      end
+    else
+      if current_user
         current_user.authentications << auth
         auth.save!
-        flash[:notice] = 'OpenID added'
-      end
-      redirect_to edit_user_path(current_user)
-    elsif auth.user
-      sign_in auth.user
-      redirect_to :root
-    else
-      tmp_name = Time.now.to_i.to_s
-      new_user = auth.create_user(:username => tmp_name, :email => auth_hash['user_info']['email'])
-      auth.save!
 
-      sign_in new_user
-      redirect_to edit_user_path(new_user)
+        flash[:notice] = 'OpenID added'
+        redirect_to :back
+      else
+        tmp_name = Time.now.to_i.to_s
+        new_user = auth.create_user(:username => tmp_name, :email => auth_hash['user_info']['email'])
+        auth.save!
+
+        sign_in new_user
+        redirect_to edit_user_path(new_user)
+      end
     end
   end
 
