@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   resources_controller_for :users
+  authorize_resource
 
   def update
     @user = User.find(params[:id])

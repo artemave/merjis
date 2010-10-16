@@ -1,11 +1,11 @@
 class AuthenticationsController < ApplicationController
-  def destroy
-    auth = Authentication.find(params[:id])
+  load_and_authorize_resource
 
-    if auth.destroy
+  def destroy
+    if @authentication.destroy
       flash[:notice] = "OpenID deleted"
     else
-      flash[:alert] = auth.errors.values.join("\n")
+      flash[:alert] = @authentication.errors.values.join("\n")
     end
 
     redirect_to :back
