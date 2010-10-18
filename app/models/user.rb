@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_and_belongs_to_many :roles
+  has_and_belongs_to_many :websites
 
   validates :email,
     :presence => true,

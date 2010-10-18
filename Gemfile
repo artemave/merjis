@@ -13,8 +13,10 @@ gem 'resources_controller', :git => 'git://github.com/ianwhite/resources_control
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'meta_where'
 
 group :test, :development do
+  gem 'mongrel', '1.2.0.pre2'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'

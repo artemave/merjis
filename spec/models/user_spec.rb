@@ -6,6 +6,7 @@ describe User do
   end
 
   it { should have_many(:authentications) }
+  it { should have_and_belong_to_many(:websites) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
   it { should validate_presence_of(:email) }
@@ -14,24 +15,32 @@ describe User do
     @user.should_not be_valid
   end
 
-  describe 'when signed in' do
-    it 'should be able to only edit his profile' do
-      ability = Ability.new(@user)
+  describe 'when edits profile' do
+    it 'should not be possible to delete last openid' do
+      @user.authentications << Factory(:authentication, :user => @user)
 
-      ability.should be_able_to(:edit, @user)
-      ability.should_not be_able_to(:edit, Factory(:user))
+      @user.authentications.delete(@user.authentications.first)
+      @user.should be_valid
+
+      @user.authentications.delete(@user.authentications.first)
+      @user.should_not be_valid
+    end
+  end
+
+  describe 'permissions' do
+    before do
+      @user = Factory(:user)
+      @ability = Ability.new(@user)
     end
 
-    describe 'and edits profile' do
-      it 'should not be possible to delete last openid' do
-        @user.authentications << Factory(:authentication, :user => @user)
+    it 'user should be able to only edit his profile' do
+      @ability.should be_able_to(:edit, @user)
+      @ability.should_not be_able_to(:edit, Factory(:user))
+    end
 
-        @user.authentications.delete(@user.authentications.first)
-        @user.should be_valid
-
-        @user.authentications.delete(@user.authentications.first)
-        @user.should_not be_valid
-      end
+    it "user should only see his websites" do
+      @ability.should be_able_to(:manage, Factory(:website, :users => [ @user ]))
+      @ability.should_not be_able_to(:manage, Factory(:website, :users => [ Factory(:user) ]))
     end
   end
 end

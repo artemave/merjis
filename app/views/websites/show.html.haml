@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Fqdn:
+  = @website.fqdn
+%p
+  %b Name:
+  = @website.name
+%p
+  %b Description:
+  = @website.description
+
+= link_to 'Edit', edit_website_path(@website)
+\|
+= link_to 'Back', websites_path

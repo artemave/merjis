@@ -1,5 +1,7 @@
 Merjis::Application.routes.draw do
 
+  resources :websites
+
   resources :authentications
 
   devise_for :users
