@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101018162710) do
+ActiveRecord::Schema.define(:version => 20101019110317) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(:version => 20101018162710) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+  end
+
+  create_table "crawl_results", :force => true do |t|
+    t.integer  "website_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "openid_associations", :force => true do |t|
@@ -54,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20101018162710) do
 
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
+  create_table "server_logs", :force => true do |t|
+    t.integer  "website_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "remember_token"

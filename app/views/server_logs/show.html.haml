@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Website:
+  = @server_log.website_id
+
+= link_to 'Edit', edit_server_log_path(@server_log)
+\|
+= link_to 'Back', server_logs_path

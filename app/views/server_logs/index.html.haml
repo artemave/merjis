@@ -1,0 +1,19 @@
+%h1 Listing server_logs
+
+%table
+  %tr
+    %th Website
+    %th
+    %th
+    %th
+
+  - @server_logs.each do |server_log|
+    %tr
+      %td= server_log.website_id
+      %td= link_to 'Show', server_log
+      %td= link_to 'Edit', edit_server_log_path(server_log)
+      %td= link_to 'Destroy', server_log, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Server log', new_server_log_path

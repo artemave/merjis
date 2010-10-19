@@ -1,0 +1,19 @@
+%h1 Listing crawl_results
+
+%table
+  %tr
+    %th Website
+    %th
+    %th
+    %th
+
+  - @crawl_results.each do |crawl_result|
+    %tr
+      %td= crawl_result.website_id
+      %td= link_to 'Show', crawl_result
+      %td= link_to 'Edit', edit_crawl_result_path(crawl_result)
+      %td= link_to 'Destroy', crawl_result, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Crawl result', new_crawl_result_path

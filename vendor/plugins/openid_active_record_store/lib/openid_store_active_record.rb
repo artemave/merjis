@@ -5,7 +5,7 @@ module OpenidStoreActiveRecord
   protected
 
   def targetize(server_url)
-    MD5.hexdigest(server_url)
+    Digest::MD5.hexdigest(server_url)
   end
 
   def build_association(open_id_association)

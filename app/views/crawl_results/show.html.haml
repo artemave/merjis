@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Website:
+  = @crawl_result.website_id
+
+= link_to 'Edit', edit_crawl_result_path(@crawl_result)
+\|
+= link_to 'Back', crawl_results_path

@@ -3,6 +3,7 @@ require 'custom_validators'
 class Website < ActiveRecord::Base
   class UniqPerUserValidator < ActiveModel::EachValidator
     def validate_each(record, attr, value)
+      # TODO refactor
       if( Website.joins(:users).where(
           :users => { :id.in => [ record.users.map(&:id) ] },
           :fqdn.eq => value,
@@ -15,6 +16,8 @@ class Website < ActiveRecord::Base
   end
 
   has_and_belongs_to_many :users
+  has_many :crawl_results
+  has_many :server_logs
 
   validates :users,
     :association_presence => true

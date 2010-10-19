@@ -1,0 +1,13 @@
+= simple_form_for @server_log do |form|
+
+  -if @server_log.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@server_log.errors.count, "error")} prohibited this #{ServerLog.name.titleize} from being saved:"
+      %ul
+        - @server_log.errors.full_messages.each do |msg|
+          %li= msg  
+
+  = form.input :website_id, :label => 'Website'
+
+  .actions
+    = form.button :submit
