@@ -1,6 +1,6 @@
 # Uninstall hook code here
 
-require 'ftools'
+require 'fileutils'
 
 # keep everything inside fo this scope
 class UnInstallOpenIdActiveRecordStore
@@ -42,7 +42,7 @@ class UnInstallOpenIdActiveRecordStore
     migrations_files.each do |file|
       puts 'Will delete ' + file
       validate_file_existance(file)
-      File.rm_f file
+      FileUtils.rm_f file
     end
   end
 

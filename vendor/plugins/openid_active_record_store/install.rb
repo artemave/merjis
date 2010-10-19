@@ -1,6 +1,6 @@
 # Install hook code here
 
-require 'ftools'
+require 'fileutils'
 
 # keep everything in this scope
 class InstallOpenIdActiveRecordStore
@@ -40,7 +40,7 @@ class InstallOpenIdActiveRecordStore
 
   def copy_migration_files
     sources.each do |file|
-      File.copy(file, target)
+      FileUtils.copy(file, target)
       puts "
       Source : #{file}
       Target : #{target}

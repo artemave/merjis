@@ -12,6 +12,8 @@ active-record. this trade gave this plugin the capability
 of accessing various databases and abstract details away from what this
 plugin really is suppose to do.
 
+This CLONE brings ruby 1.9.2 compatibility and Heroku (postgres) friendliness.
+
 Who should use this?
 --------------------
 
@@ -63,7 +65,7 @@ Installation
   1. Install the plugin
      Note: (this will add two migrations and three models to your application)
     <pre><code>
-    $ ./script/plugin install git://github.com/ktlacaelel/openid_active_recod_store.git
+    $ ./script/plugin install git://github.com/artemave/openid_active_recod_store.git
     </pre></code>
 
   2. Migrate
