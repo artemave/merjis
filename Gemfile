@@ -21,6 +21,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'cucumber'
+  #gem 'spork', '>= 0.9.0.rc2'
   gem 'spork'
   gem 'launchy'
   gem 'shoulda'
