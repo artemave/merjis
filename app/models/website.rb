@@ -1,27 +1,14 @@
 require 'custom_validators'
 
 class Website < ActiveRecord::Base
-  class UniqPerUserValidator < ActiveModel::EachValidator
-    def validate_each(record, attr, value)
-      # TODO refactor
-      if( Website.joins(:users).where(
-          :users => { :id.in => [ record.users.map(&:id) ] },
-          :fqdn.eq => value,
-          :id.not_eq => record.id
-        ).count > 0 )
 
-        record.errors[attr] << "There is already website #{value} associated with this account"
-      end
-    end
-  end
-
-  has_and_belongs_to_many :users
-  has_many :crawl_results
+  belongs_to :user
+  has_many :crawls
   has_many :server_logs
 
-  validates :users,
+  validates :user,
     :association_presence => true
   validates :fqdn,
     :presence => true,
-    :uniq_per_user => true
+    :uniqueness => {:scoped_to => :user_id}
 end

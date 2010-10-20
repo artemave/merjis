@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019110317) do
+ActiveRecord::Schema.define(:version => 20101020124710) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20101019110317) do
     t.string   "email"
   end
 
-  create_table "crawl_results", :force => true do |t|
+  create_table "crawls", :force => true do |t|
     t.integer  "website_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,14 +86,6 @@ ActiveRecord::Schema.define(:version => 20101019110317) do
   add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username"
 
-  create_table "users_websites", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "website_id"
-  end
-
-  add_index "users_websites", ["user_id"], :name => "index_users_websites_on_user_id"
-  add_index "users_websites", ["website_id"], :name => "index_users_websites_on_website_id"
-
   create_table "websites", :force => true do |t|
     t.string   "fqdn"
     t.string   "name"
@@ -104,6 +96,9 @@ ActiveRecord::Schema.define(:version => 20101019110317) do
     t.boolean  "video",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "websites", ["user_id"], :name => "index_websites_on_user_id"
 
 end

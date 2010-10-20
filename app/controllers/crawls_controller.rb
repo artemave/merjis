@@ -1,8 +1,8 @@
-class CrawlResultsController < ApplicationController
+class CrawlsController < ApplicationController
   # GET /crawl_results
   # GET /crawl_results.xml
   def index
-    @crawl_results = CrawlResult.all
+    @crawl_results = Crawl.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class CrawlResultsController < ApplicationController
   # GET /crawl_results/1
   # GET /crawl_results/1.xml
   def show
-    @crawl_result = CrawlResult.find(params[:id])
+    @crawl_result = Crawl.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class CrawlResultsController < ApplicationController
   # GET /crawl_results/new
   # GET /crawl_results/new.xml
   def new
-    @crawl_result = CrawlResult.new
+    @crawl_result = Crawl.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +34,13 @@ class CrawlResultsController < ApplicationController
 
   # GET /crawl_results/1/edit
   def edit
-    @crawl_result = CrawlResult.find(params[:id])
+    @crawl_result = Crawl.find(params[:id])
   end
 
   # POST /crawl_results
   # POST /crawl_results.xml
   def create
-    @crawl_result = CrawlResult.new(params[:crawl_result])
+    @crawl_result = Crawl.new(params[:crawl_result])
 
     respond_to do |format|
       if @crawl_result.save
@@ -56,7 +56,7 @@ class CrawlResultsController < ApplicationController
   # PUT /crawl_results/1
   # PUT /crawl_results/1.xml
   def update
-    @crawl_result = CrawlResult.find(params[:id])
+    @crawl_result = Crawl.find(params[:id])
 
     respond_to do |format|
       if @crawl_result.update_attributes(params[:crawl_result])
@@ -72,7 +72,7 @@ class CrawlResultsController < ApplicationController
   # DELETE /crawl_results/1
   # DELETE /crawl_results/1.xml
   def destroy
-    @crawl_result = CrawlResult.find(params[:id])
+    @crawl_result = Crawl.find(params[:id])
     @crawl_result.destroy
 
     respond_to do |format|

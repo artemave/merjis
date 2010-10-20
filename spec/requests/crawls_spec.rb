@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "CrawlResults" do
+describe "Crawls" do
   describe "GET /crawl_results" do
     it "works! (now write some real specs)" do
-      get crawl_results_path
+      get crawls_path
     end
   end
 end

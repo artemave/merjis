@@ -6,7 +6,7 @@ describe User do
   end
 
   it { should have_many(:authentications) }
-  it { should have_and_belong_to_many(:websites) }
+  it { should have_many(:websites) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
   it { should validate_presence_of(:email) }
@@ -39,8 +39,8 @@ describe User do
     end
 
     it "user should only see his websites" do
-      @ability.should be_able_to(:manage, Factory(:website, :users => [ @user ]))
-      @ability.should_not be_able_to(:manage, Factory(:website, :users => [ Factory(:user) ]))
+      @ability.should be_able_to(:manage, Factory(:website, :user => @user))
+      @ability.should_not be_able_to(:manage, Factory(:website, :user => Factory(:user)))
     end
   end
 end

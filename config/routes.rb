@@ -17,7 +17,7 @@ Merjis::Application.routes.draw do
 
   resources :websites do
     resources :server_logs
-    resources :crawl_results, :only => [:index, :destroy]
+    resources :crawls, :only => [:index, :destroy]
   end
 
   # The priority is based upon order of creation:
