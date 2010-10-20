@@ -10,7 +10,9 @@
       - if current_user.present?
         #user_info Logged in as #{link_to current_user.username, edit_user_path(current_user)} | #{link_to 'Logout', sign_out_path}
 
-      %p.notice= notice
-      %p.alert= alert
+      - if notice.present?
+        %p.notice.ui-state-highlight= notice
+      - if alert.present?
+        %p.alert.ui-state-error= alert
 
       = yield
