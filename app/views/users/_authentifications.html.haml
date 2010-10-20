@@ -1,4 +1,5 @@
-%table
+%h3 Google OpenIDs
+%table#authentications
   %thead
     %tr
       %th email
@@ -12,3 +13,10 @@
         %td= link_to 'Delete', auth, :confirm => 'Really?', :method => :delete
 
 = link_to 'Add OpenID', sign_in_path + '?openid_url=https://www.google.com/accounts/o8/id'
+
+:javascript
+  $(function() {
+    $('#authentications').dataTable({
+      "bJQueryUI": true
+    });
+  });
