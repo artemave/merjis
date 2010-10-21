@@ -16,7 +16,7 @@ gem 'simple_form'
 gem 'meta_where'
 
 group :test, :development do
-  gem 'mongrel', '1.2.0.pre2'
+  #gem 'mongrel', '1.2.0.pre2'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
