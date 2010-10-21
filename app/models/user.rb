@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   validates :authentications,
     :association_presence => { :message => "There must be at least one OpenID associated with account", :on => :update }
 
+
+  def is?(role)
+    roles.map(&:name).include?(role.to_s)
+  end
 end

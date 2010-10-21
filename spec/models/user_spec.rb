@@ -42,5 +42,12 @@ describe User do
       @ability.should be_able_to(:manage, Factory(:website, :user => @user))
       @ability.should_not be_able_to(:manage, Factory(:website, :user => Factory(:user)))
     end
+
+    it "admin should able to manage everything" do
+      @user = Factory(:admin_user)
+      @ability = Ability.new(@user)
+      @ability.should be_able_to(:edit, Factory(:user))
+      @ability.should be_able_to(:manage, Factory(:website, :user => Factory(:user)))
+    end
   end
 end
