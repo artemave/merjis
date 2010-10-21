@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     if @user.update_attributes(params[:user])
       flash[:notice] = 'User saved succesfully.'
-      redirect_to :root
+      redirect_to users_root_url
     else
       render :action => 'edit'
     end

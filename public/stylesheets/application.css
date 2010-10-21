@@ -49,3 +49,24 @@
 #authentications {
   width: 100%;
 }
+
+#user_info {
+  float: right;
+  margin-bottom: 2em;
+}
+
+#content_body {
+  clear: both;
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+h2 {
+  font-size: 1.17em;
+}
+
+h3 {
+  font-size: 1.07em;
+}

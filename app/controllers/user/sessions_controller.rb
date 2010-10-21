@@ -19,7 +19,7 @@ class User::SessionsController < ApplicationController
         redirect_to :back
       else
         sign_in auth.user
-        redirect_to :root
+        redirect_to users_root_url
       end
     else
       if current_user

@@ -1,5 +1,4 @@
 Merjis::Application.routes.draw do
-
   devise_for :users
   namespace :user do # that is for devise authencticate_user! to work
     resource :session, :only => [:new]
@@ -11,14 +10,15 @@ Merjis::Application.routes.draw do
 
   resources :authentications, :only => [:destroy]
 
-  resources :users, :only => [:edit, :update] do
-    resources :websites
-  end
+  resources :users, :only => [:edit, :update]
 
   resources :websites do
     resources :server_logs
     resources :crawls, :only => [:index, :destroy]
   end
+
+  root :to => "home#index"
+  match 'websites', :to => "websites#index", :as => 'users_root'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -67,9 +67,6 @@ Merjis::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 
