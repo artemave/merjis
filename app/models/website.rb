@@ -12,5 +12,5 @@ class Website < ActiveRecord::Base
     :association_presence => true
   validates :fqdn,
     :presence => true,
-    :uniqueness => {:scoped_to => :user_id}
+    :uniqueness => {:scope => :user_id}
 end
