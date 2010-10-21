@@ -7,6 +7,7 @@ describe User do
 
   it { should have_many(:authentications) }
   it { should have_many(:websites) }
+  it { should have_many(:shares) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
   it { should validate_presence_of(:email) }
@@ -24,6 +25,43 @@ describe User do
 
       @user.authentications.delete(@user.authentications.first)
       @user.should_not be_valid
+    end
+  end
+
+  describe 'website sharing' do
+    before do
+      @user = Factory(:user)
+      @website = Factory(:website, :user => @user)
+      @other_user = Factory(:user)
+      @share_attrs = {
+        :receiver => @other_user,
+        :resource => @website
+      }
+      @ability = Ability.new(@other_user)
+    end
+
+    it "should not allow user to share with himself" do
+      lambda { @user.sharings.create(@share_attrs.merge({:receiver => @user}))}.should raise_error
+    end
+
+    it "should not allow to modify sharee's shares"
+
+    describe "when created" do
+      it "should give read access to sharee's" do
+        @ability.should_not be_able_to(:read, @website)
+        @user.shares.create(@share_attrs)
+        @ability.should be_able_to(:read, @website)
+      end
+    end
+
+    describe "when deleted" do
+      it "should revoke read access from sharees" do
+        @share = @user.shares.create(@share_attrs)
+        @ability.should be_able_to(:read, @website)
+
+        @user.shares.delete(@share)
+        @ability.should_not be_able_to(:read, @website)
+      end
     end
   end
 

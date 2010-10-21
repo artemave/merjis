@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :websites, :dependent => :destroy
+  has_many :shares, :dependent => :destroy
   has_and_belongs_to_many :roles
 
   validates :email,
@@ -21,6 +22,7 @@ class User < ActiveRecord::Base
 
 
   def is?(role)
+    # TODO switch to role_model gem
     roles.map(&:name).include?(role.to_s)
   end
 end

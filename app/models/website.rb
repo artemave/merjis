@@ -5,6 +5,7 @@ class Website < ActiveRecord::Base
   attr_accessible :fqdn, :name, :description
 
   belongs_to :user
+  has_many :shares, :as => :resource
   has_many :crawls
   has_many :server_logs
 
