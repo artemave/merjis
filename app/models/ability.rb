@@ -10,7 +10,10 @@ class Ability
     can :manage, Authentication, :user_id => user.id
 
     can :manage, Website, :user_id => user.id
-    can :read, Website do |ws|
+    can :read, Website, ["websites.id in (select shares.resource_id
+                                        from shares
+                                        where shares.resource_type = 'Website'
+                                        and shares.receiver_id = '#{user.id}')"] do |ws|
       ws.shares.map(&:receiver).include?(user) #TODO optimize
     end
 
