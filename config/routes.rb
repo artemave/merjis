@@ -13,6 +13,7 @@ Merjis::Application.routes.draw do
   resources :users, :only => [:edit, :update]
 
   resources :websites do
+    resources :shares, :except => [:edit, :show]
     resources :server_logs
     resources :crawls, :only => [:index, :destroy]
   end

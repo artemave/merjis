@@ -1,0 +1,30 @@
+%h1!= "Shares for " + link_to( "#{h enclosing_resource_name.humanize}: #{h enclosing_resource.name}", enclosing_resource_path )
+
+%table#shares
+  %thead
+    %tr
+      %th Username
+      %th
+
+  %tbody
+    - @shares.each do |share|
+      %tr
+        %td= share.receiver.username
+        %td= link_to 'Destroy', send("#{enclosing_resource_name}_share_path", enclosing_resource, share), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Add Share', send("new_#{enclosing_resource_name}_share_path", enclosing_resource)
+
+:javascript
+  $(function() {
+    $('#shares').dataTable({
+      "bJQueryUI": true,
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": false,
+      "bSort": false,
+      "bInfo": false
+    });
+  });
+

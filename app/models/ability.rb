@@ -25,7 +25,7 @@ class Ability
       can? :manage, sl.website
     end
 
-    can :manage, Share, :user_id => user.id
+    can :manage, Share, :owner_id => user.id
 
   end
 end

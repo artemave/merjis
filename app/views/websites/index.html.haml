@@ -16,8 +16,8 @@
         %td= website.fqdn
         %td= website.name
         %td= website.description
-        %td= link_to 'Show', website
         %td= link_to 'Edit', edit_website_path(website)
+        %td= link_to 'Share', website_shares_path(website)
         %td= link_to 'Destroy', website, :confirm => 'Are you sure?', :method => :delete
 
 %br

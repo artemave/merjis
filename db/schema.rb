@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021160216) do
+ActiveRecord::Schema.define(:version => 20101026163047) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20101021160216) do
   end
 
   create_table "shares", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.integer  "receiver_id"
     t.integer  "resource_id"
     t.string   "resource_type"
@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(:version => 20101021160216) do
     t.datetime "updated_at"
   end
 
+  add_index "shares", ["owner_id"], :name => "index_shares_on_user_id"
   add_index "shares", ["receiver_id"], :name => "index_shares_on_receiver_id"
   add_index "shares", ["resource_id"], :name => "index_shares_on_resource_id"
-  add_index "shares", ["user_id"], :name => "index_shares_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "remember_token"

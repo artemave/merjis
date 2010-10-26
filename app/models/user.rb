@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :websites, :dependent => :destroy
-  has_many :shares, :dependent => :destroy
+  has_many :shares, :foreign_key => :owner_id, :dependent => :destroy
   has_and_belongs_to_many :roles
 
   validates :email,

@@ -1,17 +1,17 @@
 class Share < ActiveRecord::Base
-  cattr_accessor :owner
-
   belongs_to :resource,
     :polymorphic => true
   belongs_to :owner,
-    :class_name => 'User'
+    :class_name => 'User',
+    :foreign_key => :owner_id
   belongs_to :receiver,
     :class_name => 'User',
     :foreign_key => :receiver_id,
     :readonly => true
 
-  def initialize(*args)
-    super
-    self.owner ||= @@owner
-  end
+  validates :receiver,
+    :presence => true
+  validates :resource,
+    :presence => true
+
 end

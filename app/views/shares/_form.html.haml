@@ -1,0 +1,15 @@
+= simple_form_for [ enclosing_resource, @share ] do |form|
+
+  -if @share.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@share.errors.count, "error")} prohibited this #{Share.name.titleize} from being saved:"
+      %ul
+        - @share.errors.full_messages.each do |msg|
+          %li= msg  
+
+  = form.association :receiver, :collection => @users, :label_method => :username, :value_method => :id, :prompt => "Choose user"
+  /= form.association :owner, :as => :hidden, :input_html => {:value => current_user.id}
+
+  .actions
+    = form.button :submit
+
