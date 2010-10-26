@@ -13,5 +13,21 @@ class Share < ActiveRecord::Base
     :presence => true
   validates :resource,
     :presence => true
+  validates :owner,
+    :presence => true
 
+  validate :owner_is_not_receiver
+  validate :unique_share
+
+  private
+
+    def owner_is_not_receiver
+      errors.add(:base, "It is not allowed to share with yourself") if owner == receiver
+    end
+
+    def unique_share
+      if Share.where(:receiver_id => receiver.try(:id), :owner_id => owner.try(:id), :resource_id => resource.try(:id), :id.not_eq => try(:id)).first.present?
+        errors.add(:base, "It is not allowed to share the same resource twice with the same user")
+      end
+    end
 end

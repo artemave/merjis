@@ -15,6 +15,7 @@
 %br
 
 = link_to 'Add Share', send("new_#{enclosing_resource_name}_share_path", enclosing_resource)
+= link_to "Back", send("#{enclosing_resource_name.pluralize}_path")
 
 :javascript
   $(function() {
