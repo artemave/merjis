@@ -8,6 +8,7 @@ describe User do
   it { should have_many(:authentications) }
   it { should have_many(:websites) }
   it { should have_many(:shares) }
+  #it { should have_many(:own_shares) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
   it { should validate_presence_of(:email) }

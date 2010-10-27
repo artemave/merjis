@@ -1,6 +1,6 @@
 class SharesController < ApplicationController
   resources_controller_for :shares
-  authorize_resource
+  load_and_authorize_resource
 
   def new
     @share = Share.new

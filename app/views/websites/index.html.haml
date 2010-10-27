@@ -1,21 +1,19 @@
 %h1 Your websites
 
-%table#websites
+%table.websites
   %thead
     %tr
-      %th Fqdn
+      %th.wide Fqdn
       %th Name
-      %th Description
       %th
       %th
       %th
 
   %tbody
-    - @websites.each do |website|
+    - @websites.select{|w| can?(:manage, w)}.each do |website|
       %tr
-        %td= website.fqdn
+        %td= link_to website.fqdn, website
         %td= website.name
-        %td= website.description
         %td= link_to 'Edit', edit_website_path(website)
         %td= link_to 'Share', website_shares_path(website)
         %td= link_to 'Destroy', website, :confirm => 'Are you sure?', :method => :delete
@@ -24,9 +22,25 @@
 
 = link_to 'New Website', new_website_path
 
+%h1 Shared websites
+
+%table.websites
+  %thead
+    %tr
+      %th.wide Fqdn
+      %th Name
+      %th Owner
+
+  %tbody
+    - current_user.shares.select{|sh| sh.resource.class.name == 'Website'}.each do |share|
+      %tr
+        %td= link_to share.resource.fqdn, share.resource
+        %td= share.resource.name
+        %td= share.owner.username
+
 :javascript
   $(function() {
-    $('#websites').dataTable({
+    $('.websites').dataTable({
       "bJQueryUI": true,
       "bPaginate": false,
       "bLengthChange": false,

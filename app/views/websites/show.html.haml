@@ -1,6 +1,6 @@
 %p
   %b Fqdn:
-  = @website.fqdn
+  = link_to @website.fqdn, 'http://' + @website.fqdn
 %p
   %b Name:
   = @website.name
@@ -8,7 +8,7 @@
   %b Description:
   = @website.description
 %p
-  %b= pluralize(@website.categories.size, 'Category').sub(/^\d+\s/, '') + ":"
+  %b= pluralize(@website.categories.size, 'Category').sub(/\d+\s/, '') + ":"
   = @website.categories.map(&:to_s).join(", ")
 
 = link_to 'Edit', edit_website_path(@website)

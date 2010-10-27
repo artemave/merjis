@@ -1,6 +1,6 @@
 class WebsitesController < ApplicationController
   resources_controller_for :websites
-  authorize_resource
+  load_and_authorize_resource
 
   # POST /websites
   # POST /websites.xml

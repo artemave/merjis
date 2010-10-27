@@ -3,11 +3,11 @@
 %table#shares
   %thead
     %tr
-      %th Username
+      %th Shared with
       %th
 
   %tbody
-    - @shares.each do |share|
+    - @shares.select{|sh| sh.resource.class == enclosing_resource.class}.each do |share|
       %tr
         %td= share.receiver.username
         %td= link_to 'Destroy', send("#{enclosing_resource_name}_share_path", enclosing_resource, share), :confirm => 'Are you sure?', :method => :delete
