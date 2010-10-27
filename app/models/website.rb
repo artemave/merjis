@@ -2,7 +2,7 @@ require 'custom_validators'
 
 class Website < ActiveRecord::Base
 
-  attr_accessible :fqdn, :name, :description
+  attr_accessible :fqdn, :name, :description, :main, :video, :images, :mobile
 
   belongs_to :user
   has_many :shares, :as => :resource
@@ -14,4 +14,8 @@ class Website < ActiveRecord::Base
   validates :fqdn,
     :presence => true,
     :uniqueness => {:scope => :user_id}
+
+  def categories
+    [:main, :images, :video, :mobile].select{ |c| send(c) }
+  end
 end
