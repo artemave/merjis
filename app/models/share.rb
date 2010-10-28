@@ -1,4 +1,6 @@
 class Share < ActiveRecord::Base
+  attr_accessible :receiver_id
+
   belongs_to :resource,
     :polymorphic => true
   belongs_to :owner,

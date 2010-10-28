@@ -22,7 +22,11 @@ class SharesController < ApplicationController
 
   private
     def find_resources
-      @shares = Share.accessible_by(current_ability).all
+      @shares = if enclosing_resource
+                  enclosing_resource.shares.accessible_by(current_ability).all
+                else
+                  Share.accessible_by(current_ability).all
+                end
     end
 
     def find_resource
