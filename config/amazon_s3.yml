@@ -1,0 +1,20 @@
+development:
+  bucket: 'merjis'
+  access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>
+  max_file_size: 10485760
+  acl: public-read
+    
+test:
+  bucket: 'merjis'
+  access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>
+  max_file_size: 10485760
+  acl: public-read
+  
+production:
+  bucket: 'merjis'
+  access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>
+  max_file_size: 10485760
+  acl: private

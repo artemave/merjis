@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101026163047) do
+ActiveRecord::Schema.define(:version => 20101028121137) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -65,6 +65,9 @@ ActiveRecord::Schema.define(:version => 20101026163047) do
     t.integer  "website_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "log_format"
+    t.string   "filename"
+    t.string   "s3_key"
   end
 
   create_table "shares", :force => true do |t|

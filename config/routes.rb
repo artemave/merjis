@@ -1,4 +1,6 @@
 Merjis::Application.routes.draw do
+  resources :s3_uploads
+
   devise_for :users
   namespace :user do # that is for devise authencticate_user! to work
     resource :session, :only => [:new]

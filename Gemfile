@@ -14,6 +14,8 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'meta_where'
+gem 's3_swf_upload', :git => 'git://github.com/bhb/s3-swf-upload-plugin.git'
+gem 'aws-s3', :require => 'aws/s3'
 
 group :test, :development do
   gem 'mongrel', '1.2.0.pre2'

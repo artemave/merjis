@@ -1,6 +1,6 @@
 %h1!= "Shares for " + link_to( "#{h enclosing_resource_name.humanize}: #{h enclosing_resource.name}", enclosing_resource_path )
 
-%table#shares
+%table#shares.wide
   %thead
     %tr
       %th Shared with
@@ -26,6 +26,6 @@
       "bFilter": false,
       "bSort": false,
       "bInfo": false
-    });
+    }).fnAdjustColumnSizing();
   });
 

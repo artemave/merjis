@@ -1,19 +1,45 @@
-%h1 Listing server_logs
+:javascript
+  $(function() {
+    $('#logs').dataTable({
+      "bJQueryUI": true,
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": false,
+      "bSort": false,
+      "bInfo": false
+    });
+  });
 
-%table
-  %tr
-    %th Website
-    %th
-    %th
-    %th
+  function uploadCompleteHandler(upload_options, event) {
+    alert("Uploaded!")
+  }
 
-  - @server_logs.each do |server_log|
+%h1!= "Server logs for " + link_to( "#{h enclosing_resource_name.humanize}: #{h enclosing_resource.name}", enclosing_resource_path )
+
+%table#logs.wide
+  %thead
     %tr
-      %td= server_log.website_id
-      %td= link_to 'Show', server_log
-      %td= link_to 'Edit', edit_server_log_path(server_log)
-      %td= link_to 'Destroy', server_log, :confirm => 'Are you sure?', :method => :delete
+      %th Website
+      %th Filename
+      %th Log_format
+      %th
+      %th
+
+  %tbody
+    - @server_logs.each do |server_log|
+      %tr
+        %td= server_log.website.name
+        %td= server_log.filename
+        %td= server_log.log_format
+        %td= link_to 'Show', website_server_log_path(server_log.website)
+        %td= link_to 'Destroy', website_server_log_path(server_log.website), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Server log', new_server_log_path
+= raw s3_swf_upload_tag( |
+  :onFileAdd => "s3_swf_1_object.startUploading();", |
+  :onUploadComplete => "uploadCompleteHandler(upload_options,event);") |
+
+%br
+= link_to 'Back', :back
+

@@ -1,10 +1,11 @@
 %h1 Your websites
 
-%table.websites
+%table.websites.wide
   %thead
     %tr
-      %th.wide Fqdn
+      %th Fqdn
       %th Name
+      %th
       %th
       %th
       %th
@@ -14,8 +15,9 @@
       %tr
         %td= link_to website.fqdn, website
         %td= website.name
-        %td= link_to 'Edit', edit_website_path(website)
+        %td= link_to 'Logs', website_server_logs_path(website)
         %td= link_to 'Share', website_shares_path(website)
+        %td= link_to 'Edit', edit_website_path(website)
         %td= link_to 'Destroy', website, :confirm => 'Are you sure?', :method => :delete
 
 %br
@@ -24,10 +26,10 @@
 
 %h1 Shared websites
 
-%table.websites
+%table.websites.wide
   %thead
     %tr
-      %th.wide Fqdn
+      %th Fqdn
       %th Name
       %th Owner
 
