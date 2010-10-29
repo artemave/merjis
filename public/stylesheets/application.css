@@ -74,3 +74,13 @@ h3 {
 .wide {
   width: 100%;
 }
+
+.grid {
+  margin-bottom: 1.5em;
+}
+
+#progressbar {
+  width: 40%;
+  display: none;
+  float: right;
+}

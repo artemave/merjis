@@ -18,18 +18,18 @@ class ServerLog < ActiveRecord::Base
       key = "/logs/#{website.id}/#{Time.now.to_i}_#{filename}"
 
       begin
-        S3Object.rename( filename, key, S3SwfUpload::S3Config.bucket )
+        AWS::S3::S3Object.rename( filename, key, S3SwfUpload::S3Config.bucket )
         self.s3_key = key
         save!
       rescue 
-        S3Object.rename( key, filename, S3SwfUpload::S3Config.bucket )
+        AWS::S3::S3Object.rename( key, filename, S3SwfUpload::S3Config.bucket )
       end
     end
 
     def delete_file
       connect_to_s3!
 
-      S3Object.delete( filename, S3SwfUpload::S3Config.bucket )
+      AWS::S3::S3Object.delete( s3_key, S3SwfUpload::S3Config.bucket )
     end
 
     def connect_to_s3!

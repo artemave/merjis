@@ -1,16 +1,10 @@
 class ServerLogsController < ApplicationController
   resources_controller_for :server_logs, :in => :website
-  load_and_authorize_resource
+  load_and_authorize_resource :through => :website
 
   def create
-    @server_log = @website.server_logs.build(params[:server_log])
-
-    if @server_log.save
-      flash[:notice] = "Server log uploaded"
-      redirect_to website_server_logs_path(@website)
-    else
-      render :action => :new
-    end
+    @website.server_logs.create(params[:server_log])
+    render :js => "location.reload()"
   end
 
   private
