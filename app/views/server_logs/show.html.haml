@@ -1,9 +1,16 @@
 %p#notice= notice
 
+%h1!= page_name_with_enclosing("Log file")
+
 %p
   %b Website:
-  = @server_log.website_id
+  = @server_log.website.name
+%p
+  %b Filename:
+  = @server_log.filename
+%p
+  %b Log Format:
+  = @server_log.log_format
 
-= link_to 'Edit', edit_server_log_path(@server_log)
-\|
-= link_to 'Back', server_logs_path
+
+= link_to 'Back', :back
