@@ -15,7 +15,7 @@ class ServerLog < ActiveRecord::Base
     def rename
       connect_to_s3!
 
-      key = "/logs/#{website.id}/#{Time.now.to_i}_#{filename}"
+      key = generate_key
 
       begin
         AWS::S3::S3Object.rename( filename, key, S3SwfUpload::S3Config.bucket )
@@ -37,5 +37,9 @@ class ServerLog < ActiveRecord::Base
         :access_key_id     => S3SwfUpload::S3Config.access_key_id,
         :secret_access_key => S3SwfUpload::S3Config.secret_access_key
       )
+    end
+
+    def generate_key
+      "/logs/#{website.id}/#{Time.now.to_i}_#{filename}"
     end
 end
