@@ -55,6 +55,10 @@
   margin-bottom: 2em;
 }
 
+#nav_bar {
+  float: left;
+}
+
 #content_body {
   clear: both;
 }

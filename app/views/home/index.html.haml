@@ -1,3 +1,4 @@
 %h2 Welcome to Merjis!
 
-= render 'user/sessions/form'
+- unless current_user.present?
+  = render 'user/sessions/form'

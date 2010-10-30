@@ -7,8 +7,9 @@
     = csrf_meta_tag
   %body
     #content
-      #nav_bar
+      #header
         - if current_user.present?
+          #nav_bar= link_to "Home", users_root_path
           #user_info Logged in as #{link_to current_user.username, edit_user_path(current_user)} | #{link_to 'Logout', sign_out_path}
 
       #content_body
