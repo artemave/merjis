@@ -5,7 +5,6 @@ gem 'rails', '3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
 gem 'devise'
 gem 'omniauth'
 gem 'cancan'
@@ -18,11 +17,12 @@ gem 's3_swf_upload', :git => 'git://github.com/bhb/s3-swf-upload-plugin.git'
 gem 'aws-s3', :require => 'aws/s3'
 
 group :test, :development do
+  gem 'mysql'
   gem 'mongrel', '1.2.0.pre2'
-  gem 'capybara'
+  #gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
-  gem 'cucumber'
+  #gem 'cucumber-rails'
+  #gem 'cucumber'
   #gem 'spork', '>= 0.9.0.rc2'
   gem 'spork'
   gem 'launchy'

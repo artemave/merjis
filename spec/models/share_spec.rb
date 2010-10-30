@@ -24,7 +24,6 @@ describe Share do
   end
 
   it "should not allow to share the same resource with the same user (by the same owner)" do
-    Share.create(:resource => @website, :receiver => @user, :owner => @owner)
     lambda { Share.create!(:resource => @website, :receiver => @user, :owner => @owner) }.should raise_error(ActiveRecord::RecordInvalid, /not allowed.*share.*same.*twice/)
   end
 

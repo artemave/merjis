@@ -1,5 +1,5 @@
 class Share < ActiveRecord::Base
-  attr_accessible :receiver_id
+  attr_accessible :receiver, :receiver_id, :resource, :resource_id, :owner, :owner_id
 
   belongs_to :resource,
     :polymorphic => true
@@ -18,8 +18,8 @@ class Share < ActiveRecord::Base
   validates :owner,
     :presence => true
 
-  validate :owner_is_not_receiver
   validate :unique_share
+  validate :owner_is_not_receiver
 
   private
 
