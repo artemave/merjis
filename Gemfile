@@ -29,6 +29,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'mocha'
   gem 'factory_girl_rails'
   gem 'rails3-generators'
   gem 'wirble'

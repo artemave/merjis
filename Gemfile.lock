@@ -92,6 +92,8 @@ GEM
       activesupport (~> 3.0.0)
       arel (~> 1.0.1)
     mime-types (1.16)
+    mocha (0.9.9)
+      rake
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
@@ -201,6 +203,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   meta_where
+  mocha
   mongrel (= 1.2.0.pre2)
   mysql
   omniauth

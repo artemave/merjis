@@ -12,6 +12,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'cancan/matchers'
   require 'shoulda/integrations/rspec2'
+  require 'mocha'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
