@@ -22,7 +22,7 @@
     $('#progressbar').progressbar('value', current_percentage);
   }
 
-%h1!= page_name_with_enclosing("Server logs")
+%h1!= page_name_with_enclosing "Server logs"
 
 .grid
   %table#logs.wide
@@ -30,7 +30,8 @@
       %tr
         %th Website
         %th Filename
-        %th Log_format
+        %th Log Format
+        %th Uploaded At
         %th
         %th
 
@@ -40,6 +41,7 @@
           %td= server_log.website.name
           %td= server_log.filename
           %td= server_log.log_format
+          %td= server_log.created_at.to_s(:db)
           %td= link_to 'Show', website_server_log_path(server_log.website, server_log)
           %td= link_to 'Destroy', website_server_log_path(server_log.website, server_log), :confirm => 'Are you sure?', :method => :delete
 
