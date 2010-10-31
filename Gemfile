@@ -19,7 +19,7 @@ gem 'delayed_job', '>= 2.1.0.pre2'
 
 group :test, :development do
   gem 'mysql'
-  gem 'mongrel', '1.2.0.pre2'
+  #gem 'mongrel', '1.2.0.pre2'
   #gem 'capybara'
   gem 'database_cleaner'
   #gem 'cucumber-rails'

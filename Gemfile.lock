@@ -71,7 +71,6 @@ GEM
     faraday (0.4.6)
       addressable (>= 2.1.1)
       rack (>= 1.0.1)
-    gem_plugin (0.2.3)
     haml (3.0.21)
     haml-rails (0.3.1)
       actionpack (~> 3.0.0)
@@ -97,9 +96,6 @@ GEM
     mime-types (1.16)
     mocha (0.9.9)
       rake
-    mongrel (1.2.0.pre2)
-      daemons (~> 1.0.10)
-      gem_plugin (~> 0.2.3)
     multi_json (0.0.4)
     mysql (2.8.1)
     net-ldap (0.1.1)
@@ -208,7 +204,6 @@ DEPENDENCIES
   launchy
   meta_where
   mocha
-  mongrel (= 1.2.0.pre2)
   mysql
   omniauth
   rails (= 3.0.0)
