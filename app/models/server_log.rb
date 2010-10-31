@@ -2,13 +2,14 @@ class ServerLog < ActiveRecord::Base
   attr_accessible :log_format, :filename
 
   belongs_to :website
+  #has_one :process_result # for example
 
   validates :filename,
     :presence => true
   validates :website,
     :presence => true
 
-  after_create :rename
+  after_create :rename, :process!
   after_destroy :delete_file
 
   private
@@ -23,7 +24,14 @@ class ServerLog < ActiveRecord::Base
         save!
       rescue 
         AWS::S3::S3Object.rename( key, filename, S3SwfUpload::S3Config.bucket )
+        false
       end
+    end
+
+    def process!
+      #TODO hook in log processing here
+      #something like this:
+      #delay.create_process_result MegaAnalizer.sift(self)
     end
 
     def delete_file

@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'meta_where'
 gem 's3_swf_upload', :git => 'git://github.com/bhb/s3-swf-upload-plugin.git'
 gem 'aws-s3', :require => 'aws/s3'
+gem 'delayed_job', '>= 2.1.0.pre2'
 
 group :test, :development do
   gem 'mysql'
